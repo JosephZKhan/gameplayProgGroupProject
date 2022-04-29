@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 1665486238973664131}
   - component: {fileID: 1665486238973664140}
   - component: {fileID: 1665486238973664130}
+  - component: {fileID: 6653880387047878823}
   m_Layer: 0
   m_Name: Slime
   m_TagString: Punchable
@@ -145,6 +146,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: ec7f979b582b6e84bb54e4014c67ac5c, type: 2}
   - {fileID: 2100000, guid: da27229f7db0e9644a8430f414c39cf7, type: 2}
   - {fileID: 2100000, guid: 58b4643874b876e4596524d3352fad2b, type: 2}
+  launchSpeed: 10
 --- !u!135 &1665486238973664130
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -158,6 +160,28 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 4
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6653880387047878823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1665486238973664137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb699830784e71648a96d88ee86bf16d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 0
+  angle: 0
+  player: {fileID: 0}
+  target_mask:
+    serializedVersion: 2
+    m_Bits: 0
+  obstruuction_mask:
+    serializedVersion: 2
+    m_Bits: 0
+  player_in_view: 0
 --- !u!1 &1665486240036506724
 GameObject:
   m_ObjectHideFlags: 0

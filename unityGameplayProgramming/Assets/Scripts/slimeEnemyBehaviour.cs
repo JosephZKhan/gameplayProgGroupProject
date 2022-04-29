@@ -13,6 +13,8 @@ public class slimeEnemyBehaviour : MonoBehaviour
     int patrolPointIdx = 0;
     int patrolPointMax;
 
+    FieldOfView fov;
+
 
     public enum status { Patrol, Chase, Attack, Hurt };
     public status currentStatus = status.Patrol;
@@ -62,6 +64,16 @@ public class slimeEnemyBehaviour : MonoBehaviour
         rend = GetComponent<Renderer>();
         rend.sharedMaterial = materials[0];
 
+        fov = GetComponent<FieldOfView>();
+
+    }
+    private void Update()
+    {
+        if (fov.player_in_view)
+        {
+            currentStatus = status.Chase;
+            playerRef = fov.player;
+        }
     }
     void FixedUpdate()
     {
