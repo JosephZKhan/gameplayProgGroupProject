@@ -792,6 +792,18 @@ public class playerController2 : MonoBehaviour
         
     }
 
+    public void setHealth(int newHealth)
+    {
+        health = newHealth;
+        if (health <= 0)
+        {
+            if (!isDead)
+            {
+                die();
+            }
+        }
+    }
+
     void die()
     {
         isDead = true;
