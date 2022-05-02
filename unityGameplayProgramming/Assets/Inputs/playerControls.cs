@@ -97,6 +97,14 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Roll"",
+                    ""type"": ""Button"",
+                    ""id"": ""d9832cff-ce9f-4bf6-98ab-295445369448"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -484,6 +492,28 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""action"": ""Freeze"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e546b28e-3ddf-4d6a-8af9-6a548084a640"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Roll"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fe09cb78-d6ab-4680-9cd3-eff6b1f802b7"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Roll"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -525,6 +555,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
         m_Player_LockOn = m_Player.FindAction("LockOn", throwIfNotFound: true);
         m_Player_Freeze = m_Player.FindAction("Freeze", throwIfNotFound: true);
+        m_Player_Roll = m_Player.FindAction("Roll", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -584,6 +615,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_Pause;
     private readonly InputAction m_Player_LockOn;
     private readonly InputAction m_Player_Freeze;
+    private readonly InputAction m_Player_Roll;
     public struct PlayerActions
     {
         private @PlayerControls m_Wrapper;
@@ -598,6 +630,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         public InputAction @Pause => m_Wrapper.m_Player_Pause;
         public InputAction @LockOn => m_Wrapper.m_Player_LockOn;
         public InputAction @Freeze => m_Wrapper.m_Player_Freeze;
+        public InputAction @Roll => m_Wrapper.m_Player_Roll;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -637,6 +670,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Freeze.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFreeze;
                 @Freeze.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFreeze;
                 @Freeze.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFreeze;
+                @Roll.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRoll;
+                @Roll.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRoll;
+                @Roll.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRoll;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -671,6 +707,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Freeze.started += instance.OnFreeze;
                 @Freeze.performed += instance.OnFreeze;
                 @Freeze.canceled += instance.OnFreeze;
+                @Roll.started += instance.OnRoll;
+                @Roll.performed += instance.OnRoll;
+                @Roll.canceled += instance.OnRoll;
             }
         }
     }
@@ -705,5 +744,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         void OnPause(InputAction.CallbackContext context);
         void OnLockOn(InputAction.CallbackContext context);
         void OnFreeze(InputAction.CallbackContext context);
+        void OnRoll(InputAction.CallbackContext context);
     }
 }

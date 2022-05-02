@@ -122,7 +122,9 @@ public class playerController2 : MonoBehaviour
     public bool hasMercyInvincibility = false;
 
     bool isDead = false;
+    bool can_roll = true;
 
+    int roll_force = 50;
     
 
 
@@ -194,11 +196,37 @@ public class playerController2 : MonoBehaviour
     private void OnEnable()
     {
         controls.Player.Enable();
+        controls.Player.Roll.started += roll;
     }
 
     private void OnDisable()
     {
+        controls.Player.Roll.started -= roll;
         controls.Player.Disable();
+
+    }
+
+    private void roll(InputAction.CallbackContext ctx)
+    {
+        if (can_roll && isGrounded)
+        {
+            animator.SetTrigger("roll");
+            walkSpeed += roll_force;
+
+            if (isRunning)
+            {
+                runSpeed += roll_force;
+            }
+        }
+        can_roll = false;
+        Invoke("setCanRoll", 1);
+    }
+
+    void setCanRoll()
+    {
+        can_roll = true;
+        walkSpeed = 150;
+        runSpeed = 300;
     }
 
     void SendMessage(Vector2 coordinates)
