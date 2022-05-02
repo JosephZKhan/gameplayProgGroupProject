@@ -125,8 +125,11 @@ public class playerController2 : MonoBehaviour
     bool can_roll = true;
 
     int roll_force = 50;
-    
 
+    public GameObject ring_door;
+    public GameObject ring_door1;
+    Animator door_anim;
+    Animator door_anim1;
 
 
 
@@ -161,7 +164,8 @@ public class playerController2 : MonoBehaviour
         controls.Player.Freeze.canceled += ctx => unfreezePlayer();
 
         animator = GetComponent<Animator>();
-
+        door_anim = ring_door.GetComponent<Animator>();
+        door_anim1 = ring_door1.GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
         rb.useGravity = false;
 
@@ -241,6 +245,14 @@ public class playerController2 : MonoBehaviour
             pauseButtonPressed = false;
             gamePaused = !gamePaused;
             pauseGame();
+        }
+        if (ringCount >= 10)
+        {
+            door_anim.SetTrigger("open");
+        }
+        if (ringCount >= 15)
+        {
+            door_anim1.SetTrigger("open");
         }
     }
 
