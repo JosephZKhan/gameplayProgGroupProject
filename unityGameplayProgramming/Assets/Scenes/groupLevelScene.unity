@@ -496,6 +496,10 @@ PrefabInstance:
       propertyPath: m_SceneBindings.Array.data[4].value
       value: 
       objectReference: {fileID: 582840869}
+    - target: {fileID: 3442490632179638753, guid: 59b1bbf9da043844eb2cd06e79984932, type: 3}
+      propertyPath: playerScriptRef
+      value: 
+      objectReference: {fileID: 949996723}
     - target: {fileID: 3494756134153341465, guid: 59b1bbf9da043844eb2cd06e79984932, type: 3}
       propertyPath: m_InitialState
       value: 0
