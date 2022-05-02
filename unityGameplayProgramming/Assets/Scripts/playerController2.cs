@@ -250,7 +250,7 @@ public class playerController2 : MonoBehaviour
         {
             door_anim.SetTrigger("open");
         }
-        if (ringCount >= 15)
+        if (ringCount >= 30)
         {
             door_anim1.SetTrigger("open");
         }
