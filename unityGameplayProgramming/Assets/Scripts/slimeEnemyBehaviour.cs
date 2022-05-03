@@ -44,7 +44,6 @@ public class slimeEnemyBehaviour : MonoBehaviour
 
 
 
-
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -113,8 +112,6 @@ public class slimeEnemyBehaviour : MonoBehaviour
 
         if (currentStatus == status.Attack)
         {
-            
-
             //Debug.Log("in attack mode");
             if (playerRef != null)
             {

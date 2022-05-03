@@ -18,8 +18,8 @@ TagManager:
   - Lock-on Target
   - Water
   - UI
-  - 
-  - 
+  - Target
+  - Obstruction
   - TempCast
   - Walkable
   - Wall
